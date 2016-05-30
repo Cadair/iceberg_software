@@ -11,7 +11,7 @@
 ############################# Module Loads ###################################
 module load compilers/gcc/5.2
 module load apps/idl/8.5
-module load libs/gcc/5.2/fftw
+module load libs/gcc/5.2/fftw/3.3.4
 module load libs/gcc/5.2/boost/1.59
 
 ############################## Variable Setup ################################
@@ -70,5 +70,6 @@ cd build
 cmake ../ -DIDL_DLM_DIR:STRING=$prefix/dlm/$ARCH -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_LIBRARY_PATH:STRING=$BOOST/lib -DCMAKE_INCLUDE_PATH:STRING=$BOOST/include
 
 make GIT_CHECK_LIBREDUX
-make -j 8
+cd src/dlm/
+make -j 8 install
 bash
