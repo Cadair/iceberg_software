@@ -63,11 +63,12 @@ fi
 # Installation (Write the install script here)
 ##############################################################################
 ARCH=$(uname -m)
-BOOST=/usr/local/packages6/libs/gcc/4.8.2/boost/1.58.0
+export BOOST_DIR=/usr/local/packages6/libs/gcc/4.8.2/boost/1.58.0
+FFTW3=/usr/local/packages6/libs/gcc/5.2/fftw/3.3.4
 
 mkdir build
 cd build
-cmake ../ -DIDL_DLM_DIR:STRING=$prefix/dlm/$ARCH -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_LIBRARY_PATH:STRING=$BOOST/lib -DCMAKE_INCLUDE_PATH:STRING=$BOOST/include
+cmake ../ -DIDL_DLM_DIR:$prefix/dlm/$ARCH -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_LIBRARY_PATH=$FFTW3/lib -DCMAKE_INCLUDE_PATH=$FFTW3/include
 
 make GIT_CHECK_LIBREDUX
 cd src/dlm/
